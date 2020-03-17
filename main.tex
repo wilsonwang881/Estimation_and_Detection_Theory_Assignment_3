@@ -135,9 +135,57 @@
     
     \item % Q5
     
+    The joint PDF is:
+    
+    \begin{equation*}
+        \prod_{i=1}^{n} \frac{\beta^{\alpha} x_i^{\alpha-1} e^{-\beta x}}{\Gamma(\alpha)} = \frac{\beta^{\alpha n}}{\Gamma(\alpha)^n} \prod_{i=1}^{n} x_i^{\alpha-1} e^{-\beta n \sum_{i=1}^{n} x_i}
+    \end{equation*}
+    
+    With $h(X) = 1$:
+    
+    \begin{equation*}
+        \begin{aligned}
+            T_1(X) &= \prod_{i=1}^{n} x_i \\
+            T_2(X) &= \sum_{i=1}^{n} x_i
+        \end{aligned}
+    \end{equation*}
+    
+    The above are the sufficient statistics.
+    
     \item % Q6
+    
+    The joint PDF is:
+    
+    \begin{equation*}
+        \begin{aligned}
+            &= \prod_{i=1}^{n} \frac{1}{\theta_3 - \theta_1} \frac{1}{\theta_4 - \theta_2} \mathbbm{1}_{\{\theta_1, \theta_3\}}(x_n) \mathbbm{1}_{\{\theta_2, \theta_4\}}(y_n) \\
+            &= \prod_{i=1}^{n} \frac{1}{\theta_3 - \theta_1} \frac{1}{\theta_4 - \theta_2} 
+            \mathbbm{1}_{\{-\infty, X_{min}\}}(\theta_1)
+            \mathbbm{1}_{\{X_{max}, \infty\}}(\theta_3)
+            \mathbbm{1}_{\{-\infty, Y_{min}\}}(\theta_2)
+            \mathbbm{1}_{\{Y_{max}, \infty\}}(\theta_4) \\
+            &= \frac{1}{(\theta_3 - \theta_1)^n}
+            \frac{1}{(\theta_4 - \theta_2)^n}
+            \mathbbm{1}_{\{-\infty, X_{min}\}}(\theta_1)
+            \mathbbm{1}_{\{X_{max}, \infty\}}(\theta_3)
+            \mathbbm{1}_{\{-\infty, Y_{min}\}}(\theta_2)
+            \mathbbm{1}_{\{Y_{max}, \infty\}}(\theta_4)
+        \end{aligned}
+    \end{equation*}
+    
+    With $h(X) = 1$:
+    
+    \begin{equation*}
+        \begin{aligned}
+            T_1(X) &= X_{min} \\
+            T_2(X) &= X_{max} \\
+            T_3(Y) &= Y_(min) \\
+            T_4(Y) &= Y_(max)
+        \end{aligned}
+    \end{equation*}
+    
+    The above are the sufficient statistics.
+    
 \end{enumerate}
-
-
 
 \end{document}
