@@ -1,0 +1,143 @@
+\documentclass[11pt,letterpaper,titlepage]{article}
+
+\usepackage{geometry}
+\geometry{left=1.5cm,right=1.5cm,top=1.5cm,bottom=2.5cm}
+
+\usepackage{setspace}
+\onehalfspacing
+
+\usepackage{bbm}
+
+\usepackage{amsmath}
+
+\usepackage{amssymb}
+
+\usepackage{booktabs}
+
+\usepackage{pifont}
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\lhead{}
+\rhead{}
+\lfoot{ECEN 662 Estimation and Detection Theory}
+\cfoot{\thepage}
+\rfoot{Assignment 3 @Lei Wang}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\headwidth}{\textwidth}
+\renewcommand{\footrulewidth}{0.4pt}
+\newcommand{\RomanNumeralCaps}[1]
+    {\MakeUppercase{\romannumeral #1}}
+
+\begin{document}
+
+\begin{enumerate}
+    
+    \item % Q1
+    
+    Want the following:
+    
+    \begin{equation*}
+        \begin{aligned}
+            \frac{p(x | \theta)}{q(T(x) | \theta)} \\
+        \end{aligned}
+    \end{equation*}
+    
+    to be a constant. We have:
+    
+    \begin{equation*}
+        \begin{aligned}
+            p(x | \theta) &= \frac{1}{\sqrt{2 \pi \sigma^2}} e^{- \frac{1}{2 \sigma^2} x^2} \\
+            q(T(x) | \theta) &= q(|x| | \theta) \\
+            &= f(-x \leq X \leq x | \theta) \\
+            &= 2 \cdot \frac{1}{\sqrt{2 \pi \sigma^2}} e^{- \frac{1}{2 \sigma^2} x^2}
+        \end{aligned}
+    \end{equation*}
+    
+    Hence:
+    
+    \begin{equation*}
+        \frac{p(x | \theta)}{q(T(x) | \theta)} = \frac{1}{2}
+    \end{equation*}
+    
+    $|x|$ is a sufficient statistic.
+    
+    \item % Q2
+    
+    Due to independence and the domain each PDF is defined upon,the joint PDF is:
+    
+    \begin{equation*}
+        \begin{aligned}
+            \prod_{i=1}^{n} e^{i \theta - x_i} \mathbbm{1}_{\{i \theta, \infty\}}(x_i) &= e^{\sum_{i = 1}^{n} (i \theta - x_i)}\mathbbm{1}_{\{i \theta, \infty\}}(x_i) \\
+            &= e^{\sum_{i = 1}^{n} (i \theta - x_i)} \mathbbm{1}_{\{ \theta, \infty\}}(\frac{x_i}{i}) \\
+            &= e^{\sum_{i = 1}^{n}i \theta} \mathbbm{1}_{\{ \theta, \infty\}}(\frac{x_i}{i}) e^{- \sum_{i = 1}^{n} x_i} 
+        \end{aligned}
+    \end{equation*}
+    
+    Using the factorization theorem:
+    
+    \begin{equation*}
+        \begin{aligned}
+            g(T(X)|\theta) &= e^{\sum_{i = 1}^{n}i \theta} \mathbbm{1}_{\{ \theta, \infty\}}(\frac{x_i}{i}) \\
+            h(X) &= e^{- \sum_{i = 1}^{n} x_i}
+        \end{aligned}
+    \end{equation*}
+    
+    Therefore $T$ is a sufficient statistic.
+    
+    \item % Q3
+    
+    The joint PDF is:
+    
+    \begin{equation*}
+        \begin{aligned}
+            \prod_{i = 1}^{n} \frac{1}{\sigma} e^{- \frac{x_i - \mu}{\sigma}} \mathbbm{1}_{\{\mu, \infty\}}(x_i) &= \prod_{i = 1}^{n} \frac{1}{\sigma} e^{- \frac{x_i - \mu}{\sigma}} \mathbbm{1}_{\{-\infty, X_{min}\}}(\mu) \\
+            &= \frac{1}{\sigma^n} e^{-\frac{\sum_{i = 1}^{n} (x_i - \mu)}{\sigma}} \mathbbm{1}_{\{-\infty, X_{min}\}}(\mu) \\
+            &= \frac{1}{\sigma^n} e^{\frac{n \mu}{\sigma}} e^{-\frac{\sum_{i = 1}^{n} x_i}{\sigma}} \mathbbm{1}_{\{-\infty, X_{min}\}}(\mu)
+        \end{aligned}
+    \end{equation*}
+    
+    Using the factorization theorem, one possible choice for $h(X)$ is:
+    
+    \begin{equation*}
+        h(X) = 1
+    \end{equation*}
+    
+    Possible sufficient statistic will be:
+    
+    \begin{equation*}
+        \begin{aligned}
+            T_1(X) &= X_{min} \\
+            T_2(X) &= \sum_{i = 1}^{n} x_i
+        \end{aligned}
+    \end{equation*}
+    
+    \item % Q4
+    
+    Due to independence, the joint PDF is:
+    
+    \begin{equation*}
+        \begin{aligned}
+            \prod_{i = 1}^{n} \frac{1}{2i\theta} \mathbbm{1}_{\{-i(\theta-1), i(\theta+1)\}}(x_i) &= \prod_{i = 1}^{n} \frac{1}{2i\theta} \mathbbm{1}_{\{1-min(\frac{x_i}{i}), \infty\}}(\theta) \mathbbm{1}_{\{min(\frac{x_i}{i})-1, \infty\}}(\theta) \\
+            &= \frac{1}{2^n n! \theta^n} \mathbbm{1}_{\{1-min(\frac{x_i}{i}), \infty\}}(\theta) \mathbbm{1}_{\{min(\frac{x_i}{i})-1, \infty\}}(\theta)
+        \end{aligned}
+    \end{equation*}
+    
+    Sufficient statistics are:
+    
+    \begin{equation*}
+        \begin{aligned}
+            T_1(X) &= 1 - min(\frac{x_i}{i}) \\
+            T_2(X) &= min(\frac{x_i}{i}) - 1
+        \end{aligned}
+    \end{equation*}
+    
+    \item % Q5
+    
+    \item % Q6
+\end{enumerate}
+
+
+
+\end{document}
